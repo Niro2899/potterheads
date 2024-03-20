@@ -1,14 +1,20 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Characters from './components/Characters.vue'
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <div>
-    <h1>POTTERHEADS</h1>
-  </div>
-  <Characters />
-
+  <nav>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/characters">Characters</RouterLink>
+    <RouterLink to="/potions">Potions</RouterLink>  
+    <RouterLink to="/spells">Spells</RouterLink>
+    <RouterLink to="/books">Hello World</RouterLink>
+  </nav>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped>
