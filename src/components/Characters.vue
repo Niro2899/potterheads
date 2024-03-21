@@ -36,7 +36,7 @@ function fetchAPI(url) {
 // ------------ fonction pour chercher par nom ----------------- //
 
 function onInput(e) {
-  fetchAPIwithParams(null, e.target.value);
+  fetchAPI(`https://api.potterdb.com/v1/characters?filter[name_cont]=${e.target.value}`);
   console.log(e.target.value);
 }
 
@@ -72,25 +72,41 @@ function onInput(e) {
 
 
 <template>
-    <h3>Characters : </h3>
-    <input @input="onInput" placeholder="Chercher par nom">
-    <ul>
-        <li v-for="character in characters" :key="character.id">
-        {{ character.attributes.name }}
-        </li>
-    </ul>
-
-    <div>
-      <button @click="onInput_first">First</button>
-      <button @click="onInput_prev">Previous</button>
-      <button @click="onInput_next">Next</button>
-      <button @click="onInput_last">Last</button>
+  <h3>Characters:</h3>
+  <input @input="onInput" placeholder="Chercher par nom">
+  <div class="character-list">
+    <div v-for="character in characters" :key="character.id" class="character-card">
+      {{ character.attributes.name }}
+      <button @click="router.push(character.links.self)">En savoir plus</button>
     </div>
+  </div>
 
+  <div>
+    <button @click="onInput_first">First</button>
+    <button @click="onInput_prev">Previous</button>
+    <button @click="onInput_next">Next</button>
+    <button @click="onInput_last">Last</button>
+  </div>
 </template>
 
-
-
 <style scoped>
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
 </style>
