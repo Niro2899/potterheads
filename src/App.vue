@@ -5,11 +5,11 @@ import { RouterLink } from 'vue-router';
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/characters">Characters</RouterLink>
-    <RouterLink to="/potions">Potions</RouterLink>  
-    <RouterLink to="/spells">Spells</RouterLink>
-    <RouterLink to="/books">Hello World</RouterLink>
+    <RouterLink to="/"> Home    </RouterLink>
+    <RouterLink to="/characters"> Characters </RouterLink>
+    <RouterLink to="/potions"> Potions </RouterLink>  
+    <RouterLink to="/spells"> Spells </RouterLink>
+    <RouterLink to="/books"> Books </RouterLink>
   </nav>
   <main>
     <RouterView />

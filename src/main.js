@@ -5,6 +5,9 @@ import App from './App.vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Characters from './components/Characters.vue'
+import Potions from './components/Potions.vue'
+import Spells from './components/Spells.vue'
+import Books from './components/Books.vue'
 
 const routes = [
   { path: '/', component: HelloWorld },
