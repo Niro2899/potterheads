@@ -67,6 +67,10 @@ function onInput(e) {
     fetchAPI(latestLinks.last);
   }
 
+  function  getWikiUrl(character) {
+    return character.attributes.wiki;
+  }
+
 </script>
 
 
@@ -74,11 +78,13 @@ function onInput(e) {
 <template>
     <h3>books : </h3>
     <input @input="onInput" placeholder="Chercher par nom">
-    <ul>
-        <li v-for="character in characters" :key="character.id">
-        {{ character.attributes.title }}
-        </li>
-    </ul>
+    <div class="character-list">
+    <div v-for="character in characters" :key="character.id" class="character-card">
+      {{ character.attributes.title }}  
+      <img :src="character.attributes.cover" alt="character.attributes.title" />
+      <a target="_blank" :href="getWikiUrl(character)"><button>En savoir plus</button></a>
+    </div>
+  </div>
 
     <div>
       <button @click="onInput_first">First</button>
@@ -92,5 +98,29 @@ function onInput(e) {
 
 
 <style scoped>
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  height: 600px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #7e7e7e;
+}
+
+.character-card img {
+  object-fit:contain;
+  height: 80%;
+  border-radius: 50px;
+}
 
 </style>

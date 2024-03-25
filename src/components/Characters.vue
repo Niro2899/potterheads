@@ -67,6 +67,10 @@ function onInput(e) {
     fetchAPI(latestLinks.last);
   }
 
+  function  getWikiUrl(character) {
+    return character.attributes.wiki;
+  }
+
 </script>
 
 
@@ -77,7 +81,9 @@ function onInput(e) {
   <div class="character-list">
     <div v-for="character in characters" :key="character.id" class="character-card">
       {{ character.attributes.name }}
-      <button @click="router.push(character.links.self)">En savoir plus</button>
+      <br>
+      <p>{{ character.attributes.jobs[0] }}</p>
+      <a target="_blank" :href="getWikiUrl(character)"><button>En savoir plus</button></a>
     </div>
   </div>
 
@@ -106,7 +112,7 @@ function onInput(e) {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #7e7e7e;
 }
 
 </style>

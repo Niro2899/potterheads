@@ -67,6 +67,7 @@ function onInput(e) {
     fetchAPI(latestLinks.last);
   }
 
+
 </script>
 
 
@@ -74,11 +75,14 @@ function onInput(e) {
 <template>
     <h3>Potions : </h3>
     <input @input="onInput" placeholder="Chercher par nom">
-    <ul>
-        <li v-for="character in characters" :key="character.id">
+    <div class="character-list">
+      <div v-for="character in characters" :key="character.id" class="character-card">
         {{ character.attributes.name }}
-        </li>
-    </ul>
+        <br>
+        <p>{{ character.attributes.effect }}</p>
+        <RouterLink :to="'/potions/' + character.id" ><button>En savoir plus</button></RouterLink>
+      </div>
+    </div>
 
     <div>
       <button @click="onInput_first">First</button>
@@ -87,10 +91,30 @@ function onInput(e) {
       <button @click="onInput_last">Last</button>
     </div>
 
+    
+
 </template>
 
 
 
 <style scoped>
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #7e7e7e;
+}
 
 </style>

@@ -8,6 +8,7 @@ import Characters from './components/Characters.vue'
 import Potions from './components/Potions.vue'
 import Spells from './components/Spells.vue'
 import Books from './components/Books.vue'
+import Potion_detail from './components/Potion_detail.vue'
 
 const routes = [
   { path: '/', component: HelloWorld },
@@ -15,6 +16,7 @@ const routes = [
   { path: '/potions', component: Potions },
   { path: '/spells', component: Spells},
   { path: '/books', component: Books},
+  { path: '/potions/:id', component: Potion_detail},
 ]
 
 const router = createRouter({
